@@ -2,13 +2,13 @@
 using System.Collections;
 
 public class bulletDir : MonoBehaviour {
-    Rigidbody bRidg;
+  //  Rigidbody bRidg;
     walk player;
 
 	// Use this for initialization
 	void Start () {
 
-        bRidg = GetComponent<Rigidbody>();
+       // bRidg = GetComponent<Rigidbody>();
 
 	}
 	

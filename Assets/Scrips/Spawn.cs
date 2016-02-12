@@ -3,14 +3,30 @@ using System.Collections;
 
 public class Spawn : MonoBehaviour {
 
+    float randomX,randomZ,enemyRand;
+    
+    //GameObject powerup;
+    [SerializeField]
     GameObject powerup;
-	// Use this for initialization
-	void Start () {
+    [SerializeField]
+    GameObject enemy;
+
+    // Use this for initialization
+    void Start () {
 
         // GameObject.FindGameObjectWithTag("powerup").GetComponent<PowerUp1>();
-        Instantiate(GameObject.FindGameObjectWithTag("powerup").GetComponent<PowerUp1>(), new Vector3(-9.037794f, 0.25f, -7.901674f), new Quaternion(0, 0, 0, 0));
-        Instantiate(GameObject.FindGameObjectWithTag("powerup").GetComponent<PowerUp1>(), new Vector3(-8.037794f, 0.25f, -7.901674f), new Quaternion(0, 0, 0, 0));
-        Instantiate(GameObject.FindGameObjectWithTag("powerup").GetComponent<PowerUp1>(), new Vector3(-7.037794f, 0.25f, -7.901674f), new Quaternion(0, 0, 0, 0));
+        randomX = Random.Range(-14,4);
+        randomZ = Random.Range(-14, 4);
+        enemyRand =  Random.Range(0, 4);
+        Instantiate(powerup, new Vector3(randomX, 0.25f, randomZ), new Quaternion(0, 0, 0, 0));
+        for (int i = 0; i < enemyRand; i++)
+        {
+            randomX = Random.Range(-14, 4);
+            randomZ = Random.Range(-14, 4);
+            Instantiate(enemy, new Vector3(randomX, 0.25f, randomZ), new Quaternion(0, 0, 0, 0));
+
+        }
+
     }
 	
 	// Update is called once per frame
