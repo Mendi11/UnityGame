@@ -4,12 +4,14 @@ using System.Collections;
 public class PowerUp1 : MonoBehaviour {
 
 
-    float timer = 100000;
+    float timer = 9999999;
     //[SerializeField]
     walk player;
+    Counter count;
 
 	// Use this for initialization
 	void Start () {
+        count = GameObject.FindGameObjectWithTag("Text").GetComponent<Counter>();
        player = GameObject.FindGameObjectWithTag("Player").GetComponent<walk>();
 	
 	}
@@ -20,7 +22,7 @@ public class PowerUp1 : MonoBehaviour {
         timer -= Time.deltaTime;
         if (timer > 0)
         {
-            print(timer);
+            //print(timer);
         }
         else // timer is <= 0
         {
@@ -31,15 +33,16 @@ public class PowerUp1 : MonoBehaviour {
         {
             player.PowerUp[0] = false;
             Destroy(gameObject);
+           
         }
     }
     void OnCollisionEnter(Collision coll)
     {
         if (coll.gameObject.tag == "Player")
         {
-            transform.position = new Vector3(100,1000,1000);
+            count.PowerupC += 1;
+            transform.position = new Vector3(1000,1000,1000);
             timer = 10;
-
         }
         player.PowerUp[0] = true;
 
