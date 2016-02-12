@@ -4,7 +4,7 @@ using System.Collections;
 public class PowerUp1 : MonoBehaviour {
 
 
-    float timer = 100;
+    float timer = 100000;
     //[SerializeField]
     walk player;
 
@@ -43,18 +43,4 @@ public class PowerUp1 : MonoBehaviour {
         player.PowerUp[0] = true;
 
     }
-    //float Timers(float timeS)
-    //{
-    //    //float t = timeS + e;
-    //    print("Starting " + Time.time);
-    //    StartCoroutine(WaitAndPrint(timeS));
-    //    print("Before WaitAndPrint Finishes " + Time.time);
-    //    return timeS;
-
-    //}
-    //IEnumerator WaitAndPrint(float waitTime)
-    //{
-    //    yield return new WaitForSeconds(waitTime);
-    //    print("WaitAndPrint " + Time.time);
-    //}
 }
