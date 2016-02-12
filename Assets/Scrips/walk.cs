@@ -53,7 +53,7 @@ public class walk : MonoBehaviour {
                 BulletShot(1f, transform.forward);
             }
             else
-                BulletShot(1f, transform.right);
+                BulletShot(-1f, transform.right);
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
@@ -62,7 +62,7 @@ public class walk : MonoBehaviour {
                 BulletShot(-1f, transform.forward);
             }
             else
-                BulletShot(-1f,transform.right);
+                BulletShot(1f,transform.right);
         }
 
 
