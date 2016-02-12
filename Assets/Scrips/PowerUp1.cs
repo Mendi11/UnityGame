@@ -37,6 +37,7 @@ public class PowerUp1 : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Player")
         {
+            transform.position = new Vector3(100,1000,1000);
             timer = 10;
 
         }
