@@ -2,3 +2,5 @@ Temp/
 Library/
 *.sln
 *.csproj
+bin/
+*.suo
