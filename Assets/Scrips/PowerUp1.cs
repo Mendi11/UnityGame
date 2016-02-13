@@ -7,12 +7,19 @@ public class PowerUp1 : MonoBehaviour {
     float timer = 9999999;
     //[SerializeField]
     walk player;
+   [SerializeField]
     Counter count;
 
-     // Use this for initialization
-    void Start () {
+    // Use this for initialization
+    void Awake()
+    {
         count = GameObject.FindGameObjectWithTag("Text").GetComponent<Counter>();
-       player = GameObject.FindGameObjectWithTag("Player").GetComponent<walk>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<walk>();
+
+
+    }
+    void Start () {
+  
 	
 	}
 
