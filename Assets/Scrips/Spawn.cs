@@ -10,6 +10,8 @@ public class Spawn : MonoBehaviour {
     GameObject powerup;
     [SerializeField]
     GameObject enemy;
+    [SerializeField]
+    private float yvalue;
 
     // Use this for initialization
     void Start () {
@@ -18,12 +20,12 @@ public class Spawn : MonoBehaviour {
         randomX = Random.Range(-14,4);
         randomZ = Random.Range(-14, 4);
         enemyRand =  Random.Range(0, 4);
-        Instantiate(powerup, new Vector3(randomX, 0.25f, randomZ), new Quaternion(0, 0, 0, 0));
+        Instantiate(powerup, new Vector3(randomX, yvalue, randomZ), new Quaternion(0, 0, 0, 0));
         for (int i = 0; i < enemyRand; i++)
         {
             randomX = Random.Range(-14, 4);
             randomZ = Random.Range(-14, 4);
-            Instantiate(enemy, new Vector3(randomX, 0.25f, randomZ), new Quaternion(0, 0, 0, 0));
+            Instantiate(enemy, new Vector3(randomX, yvalue, randomZ), new Quaternion(0, 0, 0, 0));
 
         }
 

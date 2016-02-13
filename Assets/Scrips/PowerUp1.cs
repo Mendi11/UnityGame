@@ -9,8 +9,8 @@ public class PowerUp1 : MonoBehaviour {
     walk player;
     Counter count;
 
-	// Use this for initialization
-	void Start () {
+     // Use this for initialization
+    void Start () {
         count = GameObject.FindGameObjectWithTag("Text").GetComponent<Counter>();
        player = GameObject.FindGameObjectWithTag("Player").GetComponent<walk>();
 	
