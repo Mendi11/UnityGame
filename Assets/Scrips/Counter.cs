@@ -5,7 +5,7 @@ using System.Collections;
 public class Counter : MonoBehaviour {
     [SerializeField]
     Text text;
-    bool created = true;
+    //bool created = true;
     static Counter instance = null;
     private int powerC = 0;
 
