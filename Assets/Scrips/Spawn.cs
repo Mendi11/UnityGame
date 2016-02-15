@@ -38,7 +38,7 @@ public class Spawn : MonoBehaviour {
     void EnemySpawn(float eRand,GameObject obj)
     {
         for (int i = 0; i < eRand; i++)
-        {     
+        {      
             Instantiate(obj, new Vector3(PosRandom(-14,4), 1.057f, PosRandom(-14, 4)), new Quaternion(0, 0, 0, 0));
         }
     }

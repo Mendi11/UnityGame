@@ -26,7 +26,7 @@ public class bulletDir : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         bRidg.velocity = vel * speed;
-
+     
 	}
     void OnCollisionEnter(Collision coll)
     {
