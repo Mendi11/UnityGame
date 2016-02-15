@@ -36,7 +36,7 @@ public class walk : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision coll) {
-        randomNumber = Random.Range(0,3);
+        randomNumber = Random.Range(2,5);
         
         if (coll.gameObject.tag == "level")
         {
