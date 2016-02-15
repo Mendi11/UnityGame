@@ -8,6 +8,8 @@ public class Counter : MonoBehaviour {
     //bool created = true;
     static Counter instance = null;
     private int powerC = 0;
+    private float difficult = 2;
+    private float diffAdd = 0;
 
     // Use this for initialization
     void Awake()
@@ -29,15 +31,35 @@ public class Counter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-       // string temp = powerC.ToString();
+        // string temp = powerC.ToString();
+        if (diffAdd >= 3)
+        {
+            difficult += 1;
+            diffAdd = 0;
+
+        }
+
+
         text.text = "PowerUps: "+ powerC;
     }
     public int PowerupC
     {
         get { return powerC; }
         set { powerC = value;
-            print(powerC);
-           
+            print(powerC);          
         }
     }
+    public float EnemySpawn
+    {
+        get { return difficult;  }
+        set { difficult = value;  }
+
+    }
+    public float Diff
+    {
+        get { return diffAdd; }
+        set { diffAdd = value; }
+
+    }
+
 }
