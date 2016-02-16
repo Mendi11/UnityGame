@@ -9,17 +9,24 @@ public class walk : MonoBehaviour {
     Rigidbody bulletRgb;
     // bool right = true;
     float bulletSpeed = 15f;
+    int powerr = 3;
+    [SerializeField]
+    Counter count;
 
 
     bool[] powerUps = new bool[5];
     // Use this for initialization
+    void Awake()
+    {
+        count = GameObject.FindGameObjectWithTag("Text").GetComponent<Counter>();
+
+    }
 
     void Start() {
         rgb = GetComponent<Rigidbody>();
         //bulletRgb = GameObject.FindGameObjectWithTag("bullet").GetComponent<Rigidbody>();
+        
         PowerUpStart();
-       
-
 
     }
     void FixedUpdate()
@@ -42,13 +49,14 @@ public class walk : MonoBehaviour {
 
         if (coll.gameObject.tag == "level")
         {
-            print(randomNumber);
+           
             UnityEngine.SceneManagement.SceneManager.LoadScene(randomNumber);
         }
     }
     // Update is called once per frame
     void Update()
     {
+ 
         if (Input.GetKeyDown(KeyCode.Z))
         {
             if (powerUps[0] == true)
@@ -115,7 +123,7 @@ public class walk : MonoBehaviour {
         powerUps[1] = false;
         powerUps[2] = false;
         powerUps[3] = false;
-        powerUps[4] = true;
+        powerUps[4] = false;
 
     }
    void BulletShot(float dir ,Vector3 transfom)
@@ -130,6 +138,13 @@ public class walk : MonoBehaviour {
     {
         get { return powerUps; }
         set { powerUps = value; }
+
+
+    }
+    public int Power
+    {
+        get { return powerr; }
+        set { powerr = value; }
 
     }
 }

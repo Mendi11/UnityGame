@@ -32,20 +32,27 @@ public class PowerUp1 : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Player")
         {
+
             Destroy(gameObject);
             count.PowerupC += 1;
-            player.PowerUp[0] = true;
+            RandPowerUp();
         }
     }
     void RandPowerUp()
     {
-
+       player.PowerUp[PowerUpReset()] = true;
 
     }
-    void PowerUpReset()
+    int PowerUpReset()
     {
-        player.PowerUp[0] = true;
+        int randD = Random.Range(0,5);
+        player.PowerUp[0] = false;
+        player.PowerUp[1] = false;
+        player.PowerUp[2] = false;
+        player.PowerUp[3] = false;
+        player.PowerUp[4] = false;
 
+        return randD ;
     }
 
 }

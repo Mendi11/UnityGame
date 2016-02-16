@@ -10,6 +10,9 @@ public class Counter : MonoBehaviour {
     private int powerC = 0;
     private float difficult = 2;
     private float diffAdd = 0;
+    private int powerUP;
+    walk player;
+
 
     // Use this for initialization
     void Awake()
@@ -26,6 +29,7 @@ public class Counter : MonoBehaviour {
     }
     
     void Start () {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<walk>();
         
     }
 	
@@ -36,8 +40,8 @@ public class Counter : MonoBehaviour {
         {
             difficult += 1;
             diffAdd = 0;
-
         }
+       player.Power  = powerUP;
 
 
         text.text = "PowerUps: "+ powerC;
