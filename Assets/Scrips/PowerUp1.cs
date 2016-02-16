@@ -26,32 +26,33 @@ public class PowerUp1 : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
-        if (timer > 0)
-        {
-            //print(timer);
-        }
-        else // timer is <= 0
-        {
-            print("TIME OVER\nPress X to restart");
-
-        }
-        if (timer <= 0.5)
-        {
-            player.PowerUp[0] = false;
-            Destroy(gameObject);
-           
-        }
+            
     }
     void OnCollisionEnter(Collision coll)
     {
         if (coll.gameObject.tag == "Player")
         {
+
+            Destroy(gameObject);
             count.PowerupC += 1;
-            transform.position = new Vector3(1000,1000,1000);
-            timer = 10;
+            RandPowerUp();
         }
-        player.PowerUp[0] = true;
+    }
+    void RandPowerUp()
+    {
+       player.PowerUp[PowerUpReset()] = true;
 
     }
+    int PowerUpReset()
+    {
+        int randD = Random.Range(0,5);
+        player.PowerUp[0] = false;
+        player.PowerUp[1] = false;
+        player.PowerUp[2] = false;
+        player.PowerUp[3] = false;
+        player.PowerUp[4] = false;
+
+        return randD ;
+    }
+
 }
