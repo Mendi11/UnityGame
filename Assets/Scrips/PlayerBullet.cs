@@ -19,7 +19,7 @@ public class PlayerBullet : MonoBehaviour {
         if (coll.gameObject.tag != "Player")
         {
 
-            Destroy(gameObject);
+                 Destroy(gameObject);
 
         }
 

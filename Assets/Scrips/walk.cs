@@ -4,14 +4,13 @@ using System.Collections;
 public class walk : MonoBehaviour {
 
     private int randomNumber;
-    Rigidbody rgb;
+    private Rigidbody rgb;
     [SerializeField]
-    Rigidbody bulletRgb;
-    // bool right = true;
-    float bulletSpeed = 15f;
-    int powerr = 3;
+    private Rigidbody bulletRgb;
+    private float bulletSpeed = 15f;
+    private int powerr = 3;
     [SerializeField]
-    Counter count;
+    private Counter count;
 
 
     bool[] powerUps = new bool[5];
@@ -27,6 +26,7 @@ public class walk : MonoBehaviour {
         //bulletRgb = GameObject.FindGameObjectWithTag("bullet").GetComponent<Rigidbody>();
         
         PowerUpStart();
+        powerUps[0] = true;
 
     }
     void FixedUpdate()
@@ -49,14 +49,14 @@ public class walk : MonoBehaviour {
 
         if (coll.gameObject.tag == "level")
         {
-           
+          //Randomar en ny level.
             UnityEngine.SceneManagement.SceneManager.LoadScene(randomNumber);
         }
     }
     // Update is called once per frame
     void Update()
     {
- 
+            // Skjuter olika skott
         if (Input.GetKeyDown(KeyCode.Z))
         {
             if (powerUps[0] == true)
@@ -117,6 +117,8 @@ public class walk : MonoBehaviour {
             }
         }
       }
+
+    
     void PowerUpStart()
     {
         powerUps[0] = false;
@@ -126,13 +128,15 @@ public class walk : MonoBehaviour {
         powerUps[4] = false;
 
     }
-   void BulletShot(float dir ,Vector3 transfom)
+   void BulletShot(float dir ,Vector3 transfom)// Skotten skapas och skjuter dem.
     {
-        //print(transform.right);
+        
         Rigidbody bulletClone = (Rigidbody)Instantiate(bulletRgb, transform.position, transform.rotation);
         bulletClone.velocity = transfom * dir * bulletSpeed;
         Physics.IgnoreCollision(bulletClone.GetComponent<Collider>(), GetComponent<Collider>());
     }
+
+//Geter and seters
  
     public bool[] PowerUp
     {

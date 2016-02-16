@@ -3,23 +3,20 @@ using System.Collections;
 
 public class EnemyTwo : MonoBehaviour {
 
-    Rigidbody eRdg;
-    float randNrOne, randNrTwo, randNrThree, randNrFour;
+    //Variablar
+    private Rigidbody eRdg;
+    private float randNrOne, randNrTwo, randNrThree, randNrFour;
 
     [SerializeField]
-    Rigidbody bulletRgb;
-
-    float timer = 3;
-
-    Vector3 move;
+    private Rigidbody bulletRgb;
+    private float timer = 3;
+    private Vector3 move;
 
     // Use this for initialization
     void Start () {
 
         eRdg = GetComponent<Rigidbody>();
-        //RandomNumber();
-        //randNrOne = 1;s
-        //randNrTwo = 1;
+        //Sätter direction åt enemynr2
         move = new Vector3(1, 0, 1);
 
     }
@@ -27,10 +24,10 @@ public class EnemyTwo : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        timer -= Time.deltaTime;
+        timer -= Time.deltaTime;// Kollar tidne.
 
 
-        if (timer <= 0.5f)
+        if (timer <= 0.5f)// Varje 3 sekunder så ska den skjuta ett skott.
         {
             Rigidbody bulletClone = (Rigidbody)Instantiate(bulletRgb, transform.position, transform.rotation);
             Physics.IgnoreCollision(bulletClone.GetComponent<Collider>(), GetComponent<Collider>());
@@ -38,7 +35,7 @@ public class EnemyTwo : MonoBehaviour {
         }
       
 
-        if (eRdg.position.x >= 4)
+        if (eRdg.position.x >= 4)// kollar vilket håll den ska åka. Kollar vart den är i x pos och z pos.
         {
             RandomNumber();
             move = new Vector3(randNrOne, 0, randNrTwo);
@@ -64,7 +61,7 @@ public class EnemyTwo : MonoBehaviour {
         
     }
 
-    void RandomNumber()
+    void RandomNumber()// Randomar ny direction.
     {
         randNrOne = Random.Range(-2, -1);
         randNrTwo = Random.Range(-2, 2);

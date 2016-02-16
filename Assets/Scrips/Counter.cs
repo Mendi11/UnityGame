@@ -4,19 +4,20 @@ using System.Collections;
 
 public class Counter : MonoBehaviour {
     [SerializeField]
-    Text text;
-    //bool created = true;
+    private Text text;
+    // Varibalar
     static Counter instance = null;
     private int powerC = 0;
     private float difficult = 2;
     private float diffAdd = 0;
     private int powerUP;
-    walk player;
+    private walk player;
 
 
     // Use this for initialization
     void Awake()
     {
+        // Så den gameobjectet förstörs inte.
         if (instance == null)
         {             
             instance = this;
@@ -24,7 +25,7 @@ public class Counter : MonoBehaviour {
         else
             DestroyObject(gameObject);
 
-
+        // Så den gameobjectet förstörs inte.
         DontDestroyOnLoad(gameObject);
     }
     
@@ -35,7 +36,7 @@ public class Counter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        // string temp = powerC.ToString();
+        // Om man klartat 3 banor så ökar chansen för flera mobs.
         if (diffAdd >= 3)
         {
             difficult += 1;
@@ -43,9 +44,11 @@ public class Counter : MonoBehaviour {
         }
        player.Power  = powerUP;
 
-
+        // SKriver ut hur många powerup man har tagit;
         text.text = "PowerUps: "+ powerC;
     }
+
+    // Get och set funktioner
     public int PowerupC
     {
         get { return powerC; }

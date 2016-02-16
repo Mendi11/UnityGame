@@ -19,18 +19,19 @@ public class eneymove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //Förljer spelaren.
         Vector3 move = target.position - transform.position;
         Vector3 vel = eneRig.velocity;
         vel = move.normalized;
         eneRig.velocity = vel * enemySpeed;
-        // transform.position = Vector3.MoveTowards(transform.position, target.position, 3 * Time.deltaTime);
+   
     }
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "bullet")
         {
             enemyHealth--;
-            if (enemyHealth <= 0)    // if(boom.gameObject.tag == "bullet")
+            if (enemyHealth <= 0)
             {
                 Destroy(gameObject);
             }

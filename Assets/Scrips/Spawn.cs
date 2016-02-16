@@ -3,10 +3,11 @@ using System.Collections;
 
 public class Spawn : MonoBehaviour {
 
+    //variablar.
     float randomX,randomZ,enemyRand,enemyTwoRand;
     
     
-    //GameObject powerup;
+    //hämtar GameObject;
     [SerializeField]
     GameObject powerup;
     [SerializeField]
@@ -28,20 +29,26 @@ public class Spawn : MonoBehaviour {
     }
 
     void Start () {
-      
+      //Spawnar powerup cuben.
         Instantiate(powerup, new Vector3(PosRandom(-14, 4), yvalue, PosRandom(-14, 4)), new Quaternion(0, 0, 0, 0));
+        //Spawnar enemmy nr1 och  nr2 spawnar mera beroende på diff.
         EnemySpawn(PosRandom(0, diff.EnemySpawn), enemy);
         EnemySpawn(PosRandom(0,diff.EnemySpawn), enemyTwo);
         diff.Diff += 1;
     }
-
+    //Hämtar float vaiabel och object variabel.
     void EnemySpawn(float eRand,GameObject obj)
     {
+        // Randomar hur många looper den ska göra.
         for (int i = 0; i < eRand; i++)
         {      
+            // Spawnar object mer random pos.
             Instantiate(obj, new Vector3(PosRandom(-14,4), 1.057f, PosRandom(-14, 4)), new Quaternion(0, 0, 0, 0));
+            
         }
     }
+
+    // Hämtar in 2 float variablar och returnar 1 float variabel.
     float PosRandom(float randOne, float randTwo)
     {
         float randPos = Random.Range(randOne,randTwo);
