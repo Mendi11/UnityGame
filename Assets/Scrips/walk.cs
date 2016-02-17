@@ -25,7 +25,7 @@ public class walk : MonoBehaviour {
     void Start()
     {
 
-        playerHealth = 1;
+        playerHealth = 3;
         rgb = GetComponent<Rigidbody>();
         //bulletRgb = GameObject.FindGameObjectWithTag("bullet").GetComponent<Rigidbody>();
         
