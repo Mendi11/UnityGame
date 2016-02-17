@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyTwo : MonoBehaviour {
 
     //Variablar
+    private int enemyHealth;
     private Rigidbody eRdg;
     private float randNrOne, randNrTwo, randNrThree, randNrFour;
 
@@ -13,12 +14,12 @@ public class EnemyTwo : MonoBehaviour {
     private Vector3 move;
 
     // Use this for initialization
-    void Start () {
-
+    void Start ()
+    {
+        enemyHealth = 3;
         eRdg = GetComponent<Rigidbody>();
         //Sätter direction åt enemynr2
         move = new Vector3(1, 0, 1);
-
     }
 	
 	// Update is called once per frame
@@ -69,4 +70,16 @@ public class EnemyTwo : MonoBehaviour {
         randNrFour = Random.Range(-2, 2);
     }
 
+    void OnCollisionEnter (Collision coll)
+    {
+        if (coll.gameObject.tag == "bullet")
+        {
+            enemyHealth--;
+
+            if (enemyHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 }
