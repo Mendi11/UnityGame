@@ -3,6 +3,7 @@ using System.Collections;
 
 public class walk : MonoBehaviour {
 
+    private int playerHealth;
     private int randomNumber;
     private Rigidbody rgb;
     [SerializeField]
@@ -21,7 +22,10 @@ public class walk : MonoBehaviour {
 
     }
 
-    void Start() {
+    void Start()
+    {
+
+        playerHealth = 3;
         rgb = GetComponent<Rigidbody>();
         //bulletRgb = GameObject.FindGameObjectWithTag("bullet").GetComponent<Rigidbody>();
         
@@ -51,6 +55,16 @@ public class walk : MonoBehaviour {
         {
           //Randomar en ny level.
             UnityEngine.SceneManagement.SceneManager.LoadScene(randomNumber);
+        }
+
+        if (coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "eBullet")
+        {
+            playerHealth--;
+
+            if (playerHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
     // Update is called once per frame
