@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class bulletDir : MonoBehaviour {
+public class bossBulletDir : MonoBehaviour {
 
 
     // Variablar
