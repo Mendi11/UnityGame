@@ -5,8 +5,13 @@ public class Spawn : MonoBehaviour {
 
     //variablar.
     float randomX,randomZ,enemyRand,enemyTwoRand;
-    
-    
+    private bool enemies;
+    private int spawnCheck = 1;
+
+
+
+
+
     //hämtar GameObject;
     [SerializeField]
     GameObject powerup;
@@ -19,8 +24,9 @@ public class Spawn : MonoBehaviour {
     [SerializeField]
     GameObject enemyFour;
     [SerializeField]
+    GameObject capsule;
+    [SerializeField]
     private float yvalue;
-   
     Counter diff;
 
 
@@ -28,13 +34,15 @@ public class Spawn : MonoBehaviour {
 
     void Awake()
     {
+        //capsule = GameObject.FindGameObjectWithTag("level");
         diff = GameObject.FindGameObjectWithTag("Text").GetComponent<Counter>();
-      
+        
 
-    }
+
+}
 
     void Start () {
-      //Spawnar powerup cuben.
+        //Spawnar powerup cuben.
         Instantiate(powerup, new Vector3(PosRandom(-14, 4), yvalue, PosRandom(-14, 4)), new Quaternion(0, 0, 0, 0));
         //Spawnar enemmy nr1 och  nr2 spawnar mera beroende på diff.
         EnemySpawn(PosRandom(0, diff.EnemySpawn), enemyOne, 0.77f);
@@ -42,7 +50,8 @@ public class Spawn : MonoBehaviour {
         EnemySpawn(PosRandom(0, diff.EnemySpawn - 2), enemyThree, -1.94f);
         EnemySpawn(PosRandom(0, diff.EnemySpawn - 4), enemyFour, 2.63f);
         diff.Diff += 1;
-    }
+        
+}
     //Hämtar float vaiabel och object variabel.
     void EnemySpawn(float eRand,GameObject obj,float y)
     {
@@ -63,8 +72,14 @@ public class Spawn : MonoBehaviour {
     }
 
 	// Update is called once per frame
-	void Update () {
+	void Update (){
+        enemies = GameObject.FindGameObjectWithTag("Enemy");
+        if (enemies == false && spawnCheck == 1)
+        {
+            print("asdkjhfjasfd");
+            spawnCheck = 0;
+            Instantiate(capsule, new Vector3(-5, 1.5f,-8), new Quaternion(0, 0, 0, 0));
+        }
 
-        
-    }
+}
 }
