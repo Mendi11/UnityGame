@@ -34,29 +34,7 @@ public class EnemyTwo : MonoBehaviour {
             Physics.IgnoreCollision(bulletClone.GetComponent<Collider>(), GetComponent<Collider>());
             timer = 3;
         }
-      
-
-        if (eRdg.position.x >= 4)// kollar vilket håll den ska åka. Kollar vart den är i x pos och z pos.
-        {
-            RandomNumber();
-            move = new Vector3(randNrOne, 0, randNrTwo);
-        }
-        else if (eRdg.position.x <= -14)
-        {
-            RandomNumber();
-            move = new Vector3(randNrThree, 0, randNrFour);
-        }
-        else if (eRdg.position.z >= 4)
-        {
-            RandomNumber();
-            move = new Vector3(randNrTwo, 0, randNrOne);
-        }
-        else if (eRdg.position.z <= -14)
-        {
-            RandomNumber();
-            move = new Vector3(randNrFour, 0, randNrThree);
-        }
-       
+           
             eRdg.velocity = move;
         
         
@@ -80,6 +58,26 @@ public class EnemyTwo : MonoBehaviour {
             {
                 Destroy(gameObject);
             }
+        }
+        if (eRdg.position.x >= 0 && coll.gameObject.tag == "wall")// kollar vilket håll den ska åka. Kollar vart den är i x pos och z pos.
+        {
+            RandomNumber();
+            move = new Vector3(randNrOne, 0, randNrTwo);
+        }
+        else if (eRdg.position.x <= 0 && coll.gameObject.tag == "wall")
+        {
+            RandomNumber();
+            move = new Vector3(randNrThree, 0, randNrFour);
+        }
+        else if (eRdg.position.z >= 0 && coll.gameObject.tag == "wall")
+        {
+            RandomNumber();
+            move = new Vector3(randNrTwo, 0, randNrOne);
+        }
+        else if (eRdg.position.z <= 0 && coll.gameObject.tag == "wall")
+        {
+            RandomNumber();
+            move = new Vector3(randNrFour, 0, randNrThree);
         }
     }
 }
