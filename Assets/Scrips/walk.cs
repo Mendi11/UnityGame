@@ -12,6 +12,7 @@ public class walk : MonoBehaviour {
     private int powerr = 3;
     [SerializeField]
     private Counter count;
+    Counter diff;
 
 
     bool[] powerUps = new bool[5];
@@ -19,7 +20,7 @@ public class walk : MonoBehaviour {
     void Awake()
     {
         count = GameObject.FindGameObjectWithTag("Text").GetComponent<Counter>();
-
+        diff = GameObject.FindGameObjectWithTag("Text").GetComponent<Counter>();
     }
 
     void Start()
@@ -49,17 +50,24 @@ public class walk : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision coll) {
-        randomNumber = Random.Range(2, 5);
+        
 
         if (coll.gameObject.tag == "level")
         {
-          //Randomar en ny level.
+
+            int i = 5;
+           if(diff.EnemySpawn >= 4)
+            {
+                i = 6;
+            }
+
+            randomNumber = Random.Range(2, i);
             UnityEngine.SceneManagement.SceneManager.LoadScene(randomNumber);
         }
 
         if (coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "eBullet")
         {
-            playerHealth--;
+           // playerHealth--;
 
             if (playerHealth <= 0)
             {
