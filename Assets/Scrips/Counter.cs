@@ -33,17 +33,17 @@ public class Counter : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<walk>();
         
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
         // Om man klartat 3 banor så ökar chansen för flera mobs.
         if (diffAdd >= 3)
         {
             difficult += 1;
             diffAdd = 0;
         }
-       player.Power  = powerUP;
-        
+        player.Power = powerUP;
+
         // SKriver ut hur många powerup man har tagit;
         text.text = "PowerUps: "+ powerC;
     }

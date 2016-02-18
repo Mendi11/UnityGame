@@ -3,6 +3,8 @@ using System.Collections;
 
 public class bossAI2 : MonoBehaviour
 {
+    [SerializeField]
+    GameObject capsule;
     private Vector3 waypoint;
     [SerializeField]
     private float speed = 10;
@@ -29,6 +31,7 @@ public class bossAI2 : MonoBehaviour
 
     // Use this for initialization
     void Start() {
+       
         waypoint = GameObject.FindGameObjectWithTag("waypoint").transform.position;
         rend = GetComponent<Renderer>();
         rend.enabled = true;
@@ -81,6 +84,7 @@ public class bossAI2 : MonoBehaviour
             if (bossHealth <= 0)
             {
                 Destroy(gameObject);
+                Instantiate(capsule, new Vector3(-6.07f, 0.145f, 3.34f), new Quaternion(0, 0, 0, 0));
             }
         }
     }

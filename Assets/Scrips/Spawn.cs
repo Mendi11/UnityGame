@@ -41,26 +41,49 @@ public class Spawn : MonoBehaviour {
 
 }
 
-    void Start () {
+    void Start() {
+       
         //Spawnar powerup cuben.
         Instantiate(powerup, new Vector3(PosRandom(-14, 4), yvalue, PosRandom(-14, 4)), new Quaternion(0, 0, 0, 0));
         //Spawnar enemmy nr1 och  nr2 spawnar mera beroende på diff.
         EnemySpawn(PosRandom(0, diff.EnemySpawn), enemyOne, 0.77f);
         EnemySpawn(PosRandom(0,diff.EnemySpawn), enemyTwo, 1.289f);
-        EnemySpawn(PosRandom(0, diff.EnemySpawn - 2), enemyThree, -1.94f);
-        EnemySpawn(PosRandom(0, diff.EnemySpawn - 3), enemyFour, 2.63f);
-        diff.Diff += 3;
+        EnemySpawn(PosRandom(0, diff.EnemySpawn -3), enemyThree, -1.94f);
+        EnemySpawn(PosRandom(0, diff.EnemySpawn - 4), enemyFour, 2.63f);
+        diff.Diff += 2;
 
         
 }
     //Hämtar float vaiabel och object variabel.
     void EnemySpawn(float eRand,GameObject obj,float y)
     {
+        float ys = 1.44f;
+        if (obj == enemyThree)
+        {
+            ys = -2.6f;
+        }
+        else if (obj == enemyFour)
+        {
+            ys = 1.5f;
+        }
+        else
+        {
+            ys = 1.44f;
+
+        }
+
+        Vector3[] spawnP = new Vector3[4];
+        spawnP[0] = new Vector3(10f, ys, -13f);
+        spawnP[1] = new Vector3(-22f, ys, -13f);
+        spawnP[2] = new Vector3(10f, ys, 1.7f);
+        spawnP[3] = new Vector3(-21.7f, ys, 1.69f);
+
         // Randomar hur många looper den ska göra.
         for (int i = 0; i < eRand; i++)
-        {      
+        {
+           
             // Spawnar object mer random pos.
-            Instantiate(obj, new Vector3(PosRandom(-14,4), y, PosRandom(-14, 4)), new Quaternion(0, 0, 0, 0));
+            Instantiate(obj, spawnP[Random.Range(0,3)], new Quaternion(0, 0, 0, 0));
             
         }
     }

@@ -32,6 +32,11 @@ public class PowerUp1 : MonoBehaviour {
             Destroy(gameObject);
             count.PowerupC += 1;
             RandPowerUp();
+            if (Application.loadedLevel == 4)
+            {
+                Instantiate(gameObject, new Vector3(Random.Range(-10,4), 1, Random.Range(-10, 4)), new Quaternion(0, 0, 0, 0));
+
+            }
         }
     }
     void RandPowerUp()
