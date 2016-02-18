@@ -67,7 +67,7 @@ public class walk : MonoBehaviour {
 
         if (coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "eBullet")
         {
-          // playerHealth--;
+            playerHealth--;
 
             if (playerHealth <= 0)
             {
