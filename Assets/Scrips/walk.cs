@@ -55,10 +55,10 @@ public class walk : MonoBehaviour {
         if (coll.gameObject.tag == "level")
         {
 
-            int i = 5;
+            int i = 4;
            if(diff.EnemySpawn >= 4)
             {
-                i = 6;
+                i = 5;
             }
 
             randomNumber = Random.Range(2, i);
@@ -67,11 +67,12 @@ public class walk : MonoBehaviour {
 
         if (coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "eBullet")
         {
-           // playerHealth--;
+           playerHealth--;
 
             if (playerHealth <= 0)
             {
                 Destroy(gameObject);
+                UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             }
         }
     }

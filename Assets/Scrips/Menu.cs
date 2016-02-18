@@ -5,10 +5,12 @@ using System.Collections;
 public class Menu : MonoBehaviour
 {
 
+
+    Counter count;
     // Use this for initialization
     void Start()
     {
-
+        count = GameObject.FindGameObjectWithTag("Text").GetComponent<Counter>();
     }
 
     // Update is called once per frame
@@ -19,6 +21,7 @@ public class Menu : MonoBehaviour
     public void StartGame()
     {
        SceneManager.LoadScene(1);
+        count.PowerupC = 0;
 
     }
     public void LevelOne()
