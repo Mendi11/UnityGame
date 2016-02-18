@@ -67,7 +67,7 @@ public class walk : MonoBehaviour {
 
         if (coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "eBullet")
         {
-           playerHealth--;
+          // playerHealth--;
 
             if (playerHealth <= 0)
             {
@@ -79,7 +79,10 @@ public class walk : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-            // Skjuter olika skott
+        //transform.Rotate(new Vector3(0, 45, 0) * Time.deltaTime);
+
+
+        // Skjuter olika skott
         if (Input.GetKeyDown(KeyCode.Z))
         {
             if (powerUps[0] == true)

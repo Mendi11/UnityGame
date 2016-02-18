@@ -79,7 +79,7 @@ public class Spawn : MonoBehaviour {
         if (enemies == false && spawnCheck == 1)
         {
             spawnCheck = 0;
-            Instantiate(capsule, new Vector3(-5, 1.5f,-8), new Quaternion(0, 0, 0, 0));
+            Instantiate(capsule, new Vector3(-6.07f, 0.145f, 3.34f), new Quaternion(0, 0, 0, 0));
         }
 
 }

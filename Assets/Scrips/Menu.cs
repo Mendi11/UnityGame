@@ -22,6 +22,7 @@ public class Menu : MonoBehaviour
     {
        SceneManager.LoadScene(1);
         count.PowerupC = 0;
+        count.EnemySpawn = 1;
 
     }
     public void LevelOne()
