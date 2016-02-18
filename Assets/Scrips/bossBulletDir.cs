@@ -11,6 +11,7 @@ public class bossBulletDir : MonoBehaviour {
     private walk player;
     private Transform playerT;
     private float speed = 8f;
+    private Vector3 random;
 
 
 
