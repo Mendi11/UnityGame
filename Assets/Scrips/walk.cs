@@ -68,10 +68,12 @@ public class walk : MonoBehaviour {
         if (coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "eBullet")
         {
             playerHealth--;
+            Debug.Log("Hit by something, health:" + playerHealth);
 
             if (playerHealth <= 0)
             {
-                Destroy(gameObject);
+                //Destroy(gameObject);
+                //playerHealth = 3;
                 UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             }
         }
@@ -175,6 +177,12 @@ public class walk : MonoBehaviour {
     {
         get { return powerr; }
         set { powerr = value; }
+
+    }
+    public int PHealth
+    {
+        get { return playerHealth; }
+        set { playerHealth = value; }
 
     }
 }

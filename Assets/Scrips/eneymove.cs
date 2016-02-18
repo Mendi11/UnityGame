@@ -20,6 +20,8 @@ public class eneymove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Förljer spelaren.
+        if (target == null)
+            return;
         Vector3 move = target.position - transform.position;
         Vector3 vel = eneRig.velocity;
         vel = move.normalized;

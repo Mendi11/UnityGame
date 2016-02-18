@@ -5,6 +5,8 @@ using System.Collections;
 public class Counter : MonoBehaviour {
     [SerializeField]
     private Text text;
+    [SerializeField]
+    private Text hp;
     // Varibalar
     static Counter instance = null;
     private int powerC = 0;
@@ -36,6 +38,7 @@ public class Counter : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        
         // Om man klartat 3 banor så ökar chansen för flera mobs.
         if (diffAdd >= 3)
         {
@@ -43,9 +46,11 @@ public class Counter : MonoBehaviour {
             diffAdd = 0;
         }
         player.Power = powerUP;
-
+        int hps = player.PHealth;
+        Debug.Log("Player health is: " + hps);
         // SKriver ut hur många powerup man har tagit;
         text.text = "PowerUps: "+ powerC;
+        hp.text = "Health: " + hps;
     }
 
     // Get och set funktioner
@@ -67,6 +72,12 @@ public class Counter : MonoBehaviour {
         get { return diffAdd; }
         set { diffAdd = value; }
 
+    }
+
+    void OnLevelWasLoaded(int level)
+    {
+        if (level > 0)
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<walk>();
     }
 
 }
