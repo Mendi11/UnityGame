@@ -50,6 +50,7 @@ public class Spawn : MonoBehaviour {
         EnemySpawn(PosRandom(0, diff.EnemySpawn - 2), enemyThree, -1.94f);
         EnemySpawn(PosRandom(0, diff.EnemySpawn - 4), enemyFour, 2.63f);
         diff.Diff += 1;
+
         
 }
     //Hämtar float vaiabel och object variabel.
@@ -76,7 +77,7 @@ public class Spawn : MonoBehaviour {
         enemies = GameObject.FindGameObjectWithTag("Enemy");
         if (enemies == false && spawnCheck == 1)
         {
-            print("asdkjhfjasfd");
+            //print("asdkjhfjasfd");
             spawnCheck = 0;
             Instantiate(capsule, new Vector3(-5, 1.5f,-8), new Quaternion(0, 0, 0, 0));
         }
