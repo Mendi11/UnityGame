@@ -45,7 +45,7 @@ public class walk : MonoBehaviour {
 
         Vector3 vel = rgb.velocity;
         vel = movement.normalized;
-        rgb.velocity = vel * 4f;
+        rgb.velocity = vel * 5f;
 
     }
 

@@ -3,9 +3,9 @@ using System.Collections;
 
 public class TankEnemyMove : MonoBehaviour {
     /*[Range(0.0F, 10.0F)]*/
-    private float enemySpeed = 2;
+    private float enemySpeed = 3;
     /*[Range(0, 10)]*/
-    private int enemyHealth = 6;
+    private int enemyHealth = 10;
     Transform target;
     Rigidbody eneRig;
 
