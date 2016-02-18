@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class eneymove : MonoBehaviour {
-    /*[Range(0.0F, 10.0F)]*/ private float enemySpeed = 3;
+    /*[Range(0.0F, 10.0F)]*/ private float enemySpeed = 4;
     /*[Range(0, 10)]*/ private int enemyHealth = 3;
     Transform target;
     Rigidbody eneRig;

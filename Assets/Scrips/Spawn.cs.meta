@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: bd0acf2debeaa5e4f809175ad459b5d9
-timeCreated: 1455716717
+timeCreated: 1455800998
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
@@ -10,6 +10,7 @@ MonoImporter:
   - enemyTwo: {instanceID: 0}
   - enemyThree: {instanceID: 0}
   - enemyFour: {instanceID: 0}
+  - capsule: {fileID: 191928, guid: 3d39bb568b9b3bc4ab2b86c151fcfa7d, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

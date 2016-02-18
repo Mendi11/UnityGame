@@ -45,7 +45,7 @@ public class walk : MonoBehaviour {
 
         Vector3 vel = rgb.velocity;
         vel = movement.normalized;
-        rgb.velocity = vel * 4f;
+        rgb.velocity = vel * 5f;
 
     }
 
@@ -67,7 +67,7 @@ public class walk : MonoBehaviour {
 
         if (coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "eBullet")
         {
-           playerHealth--;
+          // playerHealth--;
 
             if (playerHealth <= 0)
             {
@@ -79,7 +79,10 @@ public class walk : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-            // Skjuter olika skott
+        //transform.Rotate(new Vector3(0, 45, 0) * Time.deltaTime);
+
+
+        // Skjuter olika skott
         if (Input.GetKeyDown(KeyCode.Z))
         {
             if (powerUps[0] == true)

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class FastEnemyMove : MonoBehaviour {
     /*[Range(0.0F, 10.0F)]*/
-    private float enemySpeed = 5;
+    private float enemySpeed = 6;
     /*[Range(0, 10)]*/
     private int enemyHealth = 2;
     Transform target;

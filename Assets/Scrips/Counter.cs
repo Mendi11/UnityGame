@@ -8,7 +8,7 @@ public class Counter : MonoBehaviour {
     // Varibalar
     static Counter instance = null;
     private int powerC = 0;
-    private float difficult = 2;
+    private float difficult = 1;
     private float diffAdd = 0;
     private int powerUP;
     private walk player;
@@ -43,7 +43,7 @@ public class Counter : MonoBehaviour {
             diffAdd = 0;
         }
        player.Power  = powerUP;
-
+        
         // SKriver ut hur många powerup man har tagit;
         text.text = "PowerUps: "+ powerC;
     }
@@ -53,7 +53,7 @@ public class Counter : MonoBehaviour {
     {
         get { return powerC; }
         set { powerC = value;
-            print(powerC);          
+            //print(powerC);          
         }
     }
     public float EnemySpawn

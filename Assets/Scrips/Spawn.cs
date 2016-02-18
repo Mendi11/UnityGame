@@ -48,8 +48,8 @@ public class Spawn : MonoBehaviour {
         EnemySpawn(PosRandom(0, diff.EnemySpawn), enemyOne, 0.77f);
         EnemySpawn(PosRandom(0,diff.EnemySpawn), enemyTwo, 1.289f);
         EnemySpawn(PosRandom(0, diff.EnemySpawn - 2), enemyThree, -1.94f);
-        EnemySpawn(PosRandom(0, diff.EnemySpawn - 4), enemyFour, 2.63f);
-        diff.Diff += 1;
+        EnemySpawn(PosRandom(0, diff.EnemySpawn - 3), enemyFour, 2.63f);
+        diff.Diff += 3;
 
         
 }
@@ -74,12 +74,12 @@ public class Spawn : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update (){
+        //Check if all eneies are dead. IF THEY ARE SPAWN Capsule
         enemies = GameObject.FindGameObjectWithTag("Enemy");
         if (enemies == false && spawnCheck == 1)
         {
-            //print("asdkjhfjasfd");
             spawnCheck = 0;
-            Instantiate(capsule, new Vector3(-5, 1.5f,-8), new Quaternion(0, 0, 0, 0));
+            Instantiate(capsule, new Vector3(-6.07f, 0.145f, 3.34f), new Quaternion(0, 0, 0, 0));
         }
 
 }

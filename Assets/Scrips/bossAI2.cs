@@ -7,6 +7,8 @@ public class bossAI2 : MonoBehaviour
     [SerializeField]
     private float speed = 10;
 
+    private int bossHealth;
+
     private int swag;
 
     private int dif = 6;
@@ -30,6 +32,8 @@ public class bossAI2 : MonoBehaviour
         waypoint = GameObject.FindGameObjectWithTag("waypoint").transform.position;
         rend = GetComponent<Renderer>();
         rend.enabled = true;
+
+        bossHealth = 30;
 
     }
     // Update is called once per frame
@@ -69,6 +73,15 @@ public class bossAI2 : MonoBehaviour
         {
 
             randomWaypoint();
+        }
+
+        if (col.gameObject.tag == "bullet")
+        {
+            bossHealth--;
+            if (bossHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
