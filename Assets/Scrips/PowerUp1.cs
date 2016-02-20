@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PowerUp1 : MonoBehaviour {
 
-    private walk player;
+    private PlayerMovement player;
     private Counter count;
 
     // Use this for initialization
@@ -11,7 +11,7 @@ public class PowerUp1 : MonoBehaviour {
     {
         //Hämtar instancen av gameobjet
         count = GameObject.FindGameObjectWithTag("Text").GetComponent<Counter>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<walk>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
 
 
     }

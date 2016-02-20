@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class walk : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour
+{
 
     private int playerHealth;
     private int randomNumber;
@@ -11,15 +12,15 @@ public class walk : MonoBehaviour {
     private float bulletSpeed = 15f;
     private int powerr = 3;
     [SerializeField]
-    private Counter count;
-    Counter diff;
+    
+    private Counter diff;
 
 
     bool[] powerUps = new bool[5];
     // Use this for initialization
     void Awake()
     {
-        count = GameObject.FindGameObjectWithTag("Text").GetComponent<Counter>();
+      
         diff = GameObject.FindGameObjectWithTag("Text").GetComponent<Counter>();
     }
 
@@ -29,7 +30,7 @@ public class walk : MonoBehaviour {
         playerHealth = 3;
         rgb = GetComponent<Rigidbody>();
         //bulletRgb = GameObject.FindGameObjectWithTag("bullet").GetComponent<Rigidbody>();
-        
+
         PowerUpStart();
         powerUps[0] = true;
 
@@ -49,14 +50,15 @@ public class walk : MonoBehaviour {
 
     }
 
-    void OnCollisionEnter(Collision coll) {
-        
+    void OnCollisionEnter(Collision coll)
+    {
+
 
         if (coll.gameObject.tag == "level")
         {
 
             int i = 4;
-           if(diff.EnemySpawn >= 4)
+            if (diff.EnemySpawn >= 4)
             {
                 i = 5;
             }
@@ -120,7 +122,7 @@ public class walk : MonoBehaviour {
             if (powerUps[0] == true)
             {
                 BulletShot(1f, transform.right);
-                
+
             }
             else if (powerUps[1] == true)
             {
@@ -144,9 +146,9 @@ public class walk : MonoBehaviour {
                 BulletShot(-1f, transform.forward + transform.right);
             }
         }
-      }
+    }
 
-    
+
     void PowerUpStart()
     {
         powerUps[0] = false;
@@ -156,16 +158,16 @@ public class walk : MonoBehaviour {
         powerUps[4] = false;
 
     }
-   void BulletShot(float dir ,Vector3 transfom)// Skotten skapas och skjuter dem.
+    void BulletShot(float dir, Vector3 transfom)// Skotten skapas och skjuter dem.
     {
-        
+
         Rigidbody bulletClone = (Rigidbody)Instantiate(bulletRgb, transform.position, transform.rotation);
         bulletClone.velocity = transfom * dir * bulletSpeed;
         Physics.IgnoreCollision(bulletClone.GetComponent<Collider>(), GetComponent<Collider>());
     }
 
-//Geter and seters
- 
+    //Geter and seters
+
     public bool[] PowerUp
     {
         get { return powerUps; }

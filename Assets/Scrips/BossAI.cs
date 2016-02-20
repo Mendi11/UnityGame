@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class bossAI2 : MonoBehaviour
+public class BossAI : MonoBehaviour
 {
     [SerializeField]
     GameObject capsule;
@@ -30,8 +30,9 @@ public class bossAI2 : MonoBehaviour
     private Renderer rend;
 
     // Use this for initialization
-    void Start() {
-       
+    void Start()
+    {
+
         waypoint = GameObject.FindGameObjectWithTag("waypoint").transform.position;
         rend = GetComponent<Renderer>();
         rend.enabled = true;
@@ -40,7 +41,8 @@ public class bossAI2 : MonoBehaviour
 
     }
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, waypoint, step);
 
@@ -48,9 +50,9 @@ public class bossAI2 : MonoBehaviour
         timer -= Time.deltaTime; // Kollar tiden
         invisTimer -= Time.deltaTime;
         timeInvis -= Time.deltaTime;
-        
 
-        if(invisTimer <= 0.5f) // Gör bossen osynlig efter x sekunder och triggrar randomwaypoint
+
+        if (invisTimer <= 0.5f) // Gör bossen osynlig efter x sekunder och triggrar randomwaypoint
         {
             rend.enabled = false;
             randomWaypoint();
@@ -122,7 +124,7 @@ public class bossAI2 : MonoBehaviour
     }
     void shootBullet() // Skjuter kulan
     {
-    
+
         Rigidbody bulletClone = (Rigidbody)Instantiate(bulletRgb, transform.position, transform.rotation);
         Physics.IgnoreCollision(bulletClone.GetComponent<Collider>(), GetComponent<Collider>());
         timer = 1;

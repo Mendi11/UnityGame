@@ -13,7 +13,7 @@ public class Counter : MonoBehaviour {
     private float difficult = 1;
     private float diffAdd = 0;
     private int powerUP;
-    private walk player;
+    private PlayerMovement player;
 
 
     // Use this for initialization
@@ -32,7 +32,7 @@ public class Counter : MonoBehaviour {
     }
     
     void Start () {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<walk>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         
     }
 
@@ -77,7 +77,7 @@ public class Counter : MonoBehaviour {
     void OnLevelWasLoaded(int level)
     {
         if (level > 0)
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<walk>();
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
 
 }
