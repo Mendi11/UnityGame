@@ -4,9 +4,9 @@ using System.Collections;
 public class Spawn : MonoBehaviour {
 
     //variablar.
-    float randomX,randomZ,enemyRand,enemyTwoRand;
-    private bool enemies;
-    private int spawnCheck = 1;
+    float mrandomX,mrandomZ,menemyRand,menemyTwoRand;
+    private bool menemies;
+    private int mspawnCheck = 1;
 
 
 
@@ -14,20 +14,20 @@ public class Spawn : MonoBehaviour {
 
     //hämtar GameObject;
     [SerializeField]
-    GameObject powerup;
+    GameObject mpowerup;
     [SerializeField]
-    GameObject enemyOne;
+    GameObject menemyOne;
     [SerializeField]
-    GameObject enemyTwo;
+    GameObject menemyTwo;
     [SerializeField]
-    GameObject enemyThree;
+    GameObject menemyThree;
     [SerializeField]
-    GameObject enemyFour;
+    GameObject menemyFour;
     [SerializeField]
-    GameObject capsule;
+    GameObject mcapsule;
     [SerializeField]
-    private float yvalue;
-    Counter diff;
+    private float myvalue;
+    Counter mdiff;
 
 
     // Use this for initialization
@@ -35,7 +35,7 @@ public class Spawn : MonoBehaviour {
     void Awake()
     {
         //capsule = GameObject.FindGameObjectWithTag("level");
-        diff = GameObject.FindGameObjectWithTag("Text").GetComponent<Counter>();
+        mdiff = GameObject.FindGameObjectWithTag("Text").GetComponent<Counter>();
         
 
 
@@ -44,13 +44,13 @@ public class Spawn : MonoBehaviour {
     void Start() {
        
         //Spawnar powerup cuben.
-        Instantiate(powerup, new Vector3(PosRandom(-14, 4), yvalue, PosRandom(-14, 4)), new Quaternion(0, 0, 0, 0));
+        Instantiate(mpowerup, new Vector3(PosRandom(-14, 4), myvalue, PosRandom(-14, 4)), new Quaternion(0, 0, 0, 0));
         //Spawnar enemmy nr1 och  nr2 spawnar mera beroende på diff.
-        EnemySpawn(PosRandom(0, diff.EnemySpawn), enemyOne, 0.77f);
-        EnemySpawn(PosRandom(0,diff.EnemySpawn), enemyTwo, 1.289f);
-        EnemySpawn(PosRandom(0, diff.EnemySpawn -3), enemyThree, -1.94f);
-        EnemySpawn(PosRandom(0, diff.EnemySpawn - 4), enemyFour, 2.63f);
-        diff.Diff += 2;
+        EnemySpawn(PosRandom(0, mdiff.EnemySpawn), menemyOne, 0.77f);
+        EnemySpawn(PosRandom(0,mdiff.EnemySpawn), menemyTwo, 1.289f);
+        EnemySpawn(PosRandom(0, mdiff.EnemySpawn -3), menemyThree, -1.94f);
+        EnemySpawn(PosRandom(0, mdiff.EnemySpawn - 4), menemyFour, 2.63f);
+      mdiff.Diff += 2;
 
         
 }
@@ -58,11 +58,11 @@ public class Spawn : MonoBehaviour {
     void EnemySpawn(float eRand,GameObject obj,float y)
     {
         float ys = 1.44f;
-        if (obj == enemyThree)
+        if (obj == menemyThree)
         {
             ys = -2.6f;
         }
-        else if (obj == enemyFour)
+        else if (obj == menemyFour)
         {
             ys = 1.5f;
         }
@@ -98,11 +98,11 @@ public class Spawn : MonoBehaviour {
 	// Update is called once per frame
 	void Update (){
         //Check if all eneies are dead. IF THEY ARE SPAWN Capsule
-        enemies = GameObject.FindGameObjectWithTag("Enemy");
-        if (enemies == false && spawnCheck == 1)
+        menemies = GameObject.FindGameObjectWithTag("Enemy");
+        if (menemies == false && mspawnCheck == 1)
         {
-            spawnCheck = 0;
-            Instantiate(capsule, new Vector3(-6.07f, 0.145f, 3.34f), new Quaternion(0, 0, 0, 0));
+            mspawnCheck = 0;
+            Instantiate(mcapsule, new Vector3(-6.07f, 0.145f, 3.34f), new Quaternion(0, 0, 0, 0));
         }
 
 }

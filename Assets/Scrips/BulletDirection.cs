@@ -6,24 +6,24 @@ public class BulletDirection : MonoBehaviour
 
 
     // Variablar
-    private Vector3 move;
-    private Vector3 vel;
-    private Rigidbody bRidg;
-    private PlayerMovement player;
-    private Transform playerT;
-    private float speed = 8f;
+    private Vector3 mmove;
+    private Vector3 mvel;
+    private Rigidbody mbRidg;
+    private PlayerMovement mplayer;
+    private Transform mplayerT;
+    private float mspeed = 8f;
 
 
 
     // Use this for initialization
     void Start()
     {
-        bRidg = GetComponent<Rigidbody>();
-        playerT = GameObject.FindGameObjectWithTag("Player").transform;
+        mbRidg = GetComponent<Rigidbody>();
+        mplayerT = GameObject.FindGameObjectWithTag("Player").transform;
 
         // Hämtar spelarens position och normalizerar den så den inte flyger snabbare diagnoalt. 
-        move = playerT.transform.position - transform.position;
-        vel = move.normalized;
+        mmove = mplayerT.transform.position - transform.position;
+        mvel = mmove.normalized;
     }
 
 
@@ -32,7 +32,7 @@ public class BulletDirection : MonoBehaviour
     {
 
         // rigidbody får vilket håll dne ska flyga gånger speed
-        bRidg.velocity = vel * speed;
+        mbRidg.velocity = mvel * mspeed;
 
     }
     void OnCollisionEnter(Collision coll)

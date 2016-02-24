@@ -6,11 +6,11 @@ public class Menu : MonoBehaviour
 {
 
    
-    Counter count;
+    Counter mcount;
     // Use this for initialization
     void Start()
     {
-        count = GameObject.FindGameObjectWithTag("Text").GetComponent<Counter>();
+        mcount = GameObject.FindGameObjectWithTag("Text").GetComponent<Counter>();
        
     }
 
@@ -22,8 +22,8 @@ public class Menu : MonoBehaviour
     public void StartGame()
     {
        SceneManager.LoadScene(1);
-        count.PowerupC = 0;
-        count.EnemySpawn = 1;
+        mcount.PowerupC = 0;
+        mcount.EnemySpawn = 1;
         
 
 

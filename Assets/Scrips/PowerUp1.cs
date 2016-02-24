@@ -3,15 +3,15 @@ using System.Collections;
 
 public class PowerUp1 : MonoBehaviour {
 
-    private PlayerMovement player;
-    private Counter count;
+    private PlayerMovement mplayer;
+    private Counter mcount;
 
     // Use this for initialization
     void Awake()
     {
         //Hämtar instancen av gameobjet
-        count = GameObject.FindGameObjectWithTag("Text").GetComponent<Counter>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        mcount = GameObject.FindGameObjectWithTag("Text").GetComponent<Counter>();
+        mplayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
 
 
     }
@@ -30,7 +30,7 @@ public class PowerUp1 : MonoBehaviour {
         if (coll.gameObject.tag == "Player")
         {
             Destroy(gameObject);
-            count.PowerupC += 1;
+            mcount.PowerupC += 1;
             RandPowerUp();
             if (Application.loadedLevel == 4)
             {
@@ -42,18 +42,18 @@ public class PowerUp1 : MonoBehaviour {
     void RandPowerUp()
     {
         // Randomen lägs vilken power up man får.
-       player.PowerUp[PowerUpReset()] = true;
+       mplayer.PowerUp[PowerUpReset()] = true;
 
     }
     int PowerUpReset()
     {
         //Sätter alla False och retunar en ny random;
         int randD = Random.Range(0,5);
-        player.PowerUp[0] = false;
-        player.PowerUp[1] = false;
-        player.PowerUp[2] = false;
-        player.PowerUp[3] = false;
-        player.PowerUp[4] = false;
+        mplayer.PowerUp[0] = false;
+        mplayer.PowerUp[1] = false;
+        mplayer.PowerUp[2] = false;
+        mplayer.PowerUp[3] = false;
+        mplayer.PowerUp[4] = false;
 
         return randD ;
     }

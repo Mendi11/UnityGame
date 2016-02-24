@@ -4,25 +4,25 @@ using System.Collections;
 
 public class Counter : MonoBehaviour {
     [SerializeField]
-    private Text text;
+    private Text mtext;
     [SerializeField]
-    private Text hp;
+    private Text mhp;
     // Varibalar
-    static Counter instance = null;
-    private int powerC = 0;
-    private float difficult = 1;
-    private float diffAdd = 0;
-    private int powerUP;
-    private PlayerMovement player;
+    static Counter minstance = null;
+    private int mpowerC = 0;
+    private float mdifficult = 1;
+    private float mdiffAdd = 0;
+    private int mpowerUP;
+    private PlayerMovement mplayer;
 
 
     // Use this for initialization
     void Awake()
     {
         // Så den gameobjectet förstörs inte.
-        if (instance == null)
+        if (minstance == null)
         {             
-            instance = this;
+            minstance = this;
         }
         else
             DestroyObject(gameObject);
@@ -32,7 +32,7 @@ public class Counter : MonoBehaviour {
     }
     
     void Start () {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        mplayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         
     }
 
@@ -40,44 +40,44 @@ public class Counter : MonoBehaviour {
     void Update() {
         
         // Om man klartat 3 banor så ökar chansen för flera mobs.
-        if (diffAdd >= 3)
+        if (mdiffAdd >= 3)
         {
-            difficult += 1;
-            diffAdd = 0;
+            mdifficult += 1;
+            mdiffAdd = 0;
         }
-        player.Power = powerUP;
-        int hps = player.PHealth;
+        mplayer.Power = mpowerUP;
+        int hps = mplayer.PHealth;
         Debug.Log("Player health is: " + hps);
         // SKriver ut hur många powerup man har tagit;
-        text.text = "PowerUps: "+ powerC;
-        hp.text = "Health: " + hps;
+        mtext.text = "PowerUps: "+ mpowerC;
+        mhp.text = "Health: " + hps;
     }
 
     // Get och set funktioner
     public int PowerupC
     {
-        get { return powerC; }
-        set { powerC = value;
+        get { return mpowerC; }
+        set { mpowerC = value;
             //print(powerC);          
         }
     }
     public float EnemySpawn
     {
-        get { return difficult;  }
-        set { difficult = value;  }
+        get { return mdifficult;  }
+        set { mdifficult = value;  }
 
     }
     public float Diff
     {
-        get { return diffAdd; }
-        set { diffAdd = value; }
+        get { return mdiffAdd; }
+        set { mdiffAdd = value; }
 
     }
 
     void OnLevelWasLoaded(int level)
     {
         if (level > 0)
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+            mplayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
 
 }

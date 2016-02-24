@@ -3,11 +3,11 @@ using System.Collections;
 
 public class TankEnemyMove : MonoBehaviour {
     /*[Range(0.0F, 10.0F)]*/
-    private float enemySpeed = 3;
+    private float menemySpeed = 3;
     /*[Range(0, 10)]*/
-    private int enemyHealth = 10;
-    Transform target;
-    Rigidbody eneRig;
+    private int menemyHealth = 10;
+    Transform mtarget;
+    Rigidbody meneRig;
 
 
 
@@ -15,8 +15,8 @@ public class TankEnemyMove : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        eneRig = GetComponent<Rigidbody>();
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        meneRig = GetComponent<Rigidbody>();
+        mtarget = GameObject.FindGameObjectWithTag("Player").transform;
 
     }
 
@@ -24,18 +24,18 @@ public class TankEnemyMove : MonoBehaviour {
     void Update()
     {
         //Förljer spelaren.
-        Vector3 move = target.position - transform.position;
-        Vector3 vel = eneRig.velocity;
+        Vector3 move = mtarget.position - transform.position;
+        Vector3 vel = meneRig.velocity;
         vel = move.normalized;
-        eneRig.velocity = vel * enemySpeed;
+        meneRig.velocity = vel * menemySpeed;
 
     }
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "bullet")
         {
-            enemyHealth--;
-            if (enemyHealth <= 0)
+            menemyHealth--;
+            if (menemyHealth <= 0)
             {
                 Destroy(gameObject);
             }

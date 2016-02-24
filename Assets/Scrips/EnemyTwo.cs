@@ -4,80 +4,80 @@ using System.Collections;
 public class EnemyTwo : MonoBehaviour {
 
     //Variablar
-    private int enemyHealth;
-    private Rigidbody eRdg;
-    private float randNrOne, randNrTwo, randNrThree, randNrFour;
+    private int menemyHealth;
+    private Rigidbody meRdg;
+    private float mrandNrOne, mrandNrTwo, mrandNrThree, mrandNrFour;
 
     [SerializeField]
-    private Rigidbody bulletRgb;
-    private float timer = 3;
-    private Vector3 move;
+    private Rigidbody mbulletRgb;
+    private float mtimer = 3;
+    private Vector3 mmove;
 
     // Use this for initialization
     void Start ()
     {
-        enemyHealth = 3;
-        eRdg = GetComponent<Rigidbody>();
+        menemyHealth = 3;
+        meRdg = GetComponent<Rigidbody>();
         //Sätter direction åt enemynr2
-        move = new Vector3(1, 0, 1);
+        mmove = new Vector3(1, 0, 1);
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        timer -= Time.deltaTime;// Kollar tidne.
+        mtimer -= Time.deltaTime;// Kollar tidne.
 
 
-        if (timer <= 0.5f)// Varje 3 sekunder så ska den skjuta ett skott.
+        if (mtimer <= 0.5f)// Varje 3 sekunder så ska den skjuta ett skott.
         {
-            Rigidbody bulletClone = (Rigidbody)Instantiate(bulletRgb, transform.position, transform.rotation);
+            Rigidbody bulletClone = (Rigidbody)Instantiate(mbulletRgb, transform.position, transform.rotation);
             Physics.IgnoreCollision(bulletClone.GetComponent<Collider>(), GetComponent<Collider>());
-            timer = 3;
+            mtimer = 3;
         }
            
-            eRdg.velocity = move;
+            meRdg.velocity = mmove;
         
         
     }
 
     void RandomNumber()// Randomar ny direction.
     {
-        randNrOne = Random.Range(-2, -1);
-        randNrTwo = Random.Range(-2, 2);
-        randNrThree = Random.Range(0, 2);
-        randNrFour = Random.Range(-2, 2);
+        mrandNrOne = Random.Range(-2, -1);
+        mrandNrTwo = Random.Range(-2, 2);
+        mrandNrThree = Random.Range(0, 2);
+        mrandNrFour = Random.Range(-2, 2);
     }
 
     void OnCollisionEnter (Collision coll)
     {
         if (coll.gameObject.tag == "bullet")
         {
-            enemyHealth--;
+            menemyHealth--;
 
-            if (enemyHealth <= 0)
+            if (menemyHealth <= 0)
             {
                 Destroy(gameObject);
             }
         }
-        if (eRdg.position.x >= 0 && coll.gameObject.tag == "wall")// kollar vilket håll den ska åka. Kollar vart den är i x pos och z pos.
+        if (meRdg.position.x >= 0 && coll.gameObject.tag == "wall")// kollar vilket håll den ska åka. Kollar vart den är i x pos och z pos.
         {
             RandomNumber();
-            move = new Vector3(randNrOne, 0, randNrTwo);
+            mmove = new Vector3(mrandNrOne, 0, mrandNrTwo);
         }
-        else if (eRdg.position.x <= 0 && coll.gameObject.tag == "wall")
+        else if (meRdg.position.x <= 0 && coll.gameObject.tag == "wall")
         {
             RandomNumber();
-            move = new Vector3(randNrThree, 0, randNrFour);
+            mmove = new Vector3(mrandNrThree, 0, mrandNrFour);
         }
-        else if (eRdg.position.z >= 0 && coll.gameObject.tag == "wall")
+        else if (meRdg.position.z >= 0 && coll.gameObject.tag == "wall")
         {
             RandomNumber();
-            move = new Vector3(randNrTwo, 0, randNrOne);
+            mmove = new Vector3(mrandNrTwo, 0, mrandNrOne);
         }
-        else if (eRdg.position.z <= 0 && coll.gameObject.tag == "wall")
+        else if (meRdg.position.z <= 0 && coll.gameObject.tag == "wall")
         {
             RandomNumber();
-            move = new Vector3(randNrFour, 0, randNrThree);
+            mmove = new Vector3(mrandNrFour, 0, mrandNrThree);
         }
     }
 }

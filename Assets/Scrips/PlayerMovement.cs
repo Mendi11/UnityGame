@@ -4,19 +4,19 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
 
-    private int playerHealth;
-    private int randomNumber;
-    private Rigidbody rgb;
+    private int mplayerHealth;
+    private int mrandomNumber;
+    private Rigidbody mrgb;
     [SerializeField]
-    private Rigidbody bulletRgb;
-    private float bulletSpeed = 15f;
-    private int powerr = 3;
+    private Rigidbody mbulletRgb;
+    private float mbulletSpeed = 15f;
+    private int mpowerr = 3;
     [SerializeField]
     
     private Counter diff;
 
 
-    bool[] powerUps = new bool[5];
+    bool[] mpowerUps = new bool[5];
     // Use this for initialization
     void Awake()
     {
@@ -27,12 +27,12 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
 
-        playerHealth = 3;
-        rgb = GetComponent<Rigidbody>();
+        mplayerHealth = 3;
+        mrgb = GetComponent<Rigidbody>();
         //bulletRgb = GameObject.FindGameObjectWithTag("bullet").GetComponent<Rigidbody>();
 
         PowerUpStart();
-        powerUps[0] = true;
+        mpowerUps[0] = true;
 
     }
     void FixedUpdate()
@@ -44,9 +44,9 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 movement = new Vector3(h, 0, v);
 
-        Vector3 vel = rgb.velocity;
+        Vector3 vel = mrgb.velocity;
         vel = movement.normalized;
-        rgb.velocity = vel * 5f;
+        mrgb.velocity = vel * 5f;
 
     }
 
@@ -63,16 +63,16 @@ public class PlayerMovement : MonoBehaviour
                 i = 5;
             }
 
-            randomNumber = Random.Range(2, i);
-            UnityEngine.SceneManagement.SceneManager.LoadScene(randomNumber);
+            mrandomNumber = Random.Range(2, i);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(mrandomNumber);
         }
 
         if (coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "eBullet")
         {
-            playerHealth--;
-            Debug.Log("Hit by something, health:" + playerHealth);
+            mplayerHealth--;
+            Debug.Log("Hit by something, health:" + mplayerHealth);
 
-            if (playerHealth <= 0)
+            if (mplayerHealth <= 0)
             {
                 //Destroy(gameObject);
                 //playerHealth = 3;
@@ -89,26 +89,26 @@ public class PlayerMovement : MonoBehaviour
         // Skjuter olika skott
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            if (powerUps[0] == true)
+            if (mpowerUps[0] == true)
             {
                 BulletShot(-1f, transform.right);
 
             }
-            else if (powerUps[1] == true)
+            else if (mpowerUps[1] == true)
             {
                 BulletShot(1f, transform.forward);
             }
-            else if (powerUps[2] == true)
+            else if (mpowerUps[2] == true)
             {
                 BulletShot(-1f, transform.right);
                 BulletShot(1f, transform.right);
             }
-            else if (powerUps[3] == true)
+            else if (mpowerUps[3] == true)
             {
                 BulletShot(1f, transform.forward - transform.right);
                 BulletShot(1f, transform.forward + transform.right);
             }
-            else if (powerUps[4] == true)
+            else if (mpowerUps[4] == true)
             {
                 BulletShot(-1f, transform.right);
                 BulletShot(1f, transform.right);
@@ -119,26 +119,26 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
-            if (powerUps[0] == true)
+            if (mpowerUps[0] == true)
             {
                 BulletShot(1f, transform.right);
 
             }
-            else if (powerUps[1] == true)
+            else if (mpowerUps[1] == true)
             {
                 BulletShot(-1f, transform.forward);
             }
-            else if (powerUps[2] == true)
+            else if (mpowerUps[2] == true)
             {
                 BulletShot(-1f, transform.forward);
                 BulletShot(1f, transform.forward);
             }
-            else if (powerUps[3] == true)
+            else if (mpowerUps[3] == true)
             {
                 BulletShot(-1f, transform.forward - transform.right);
                 BulletShot(-1f, transform.forward + transform.right);
             }
-            else if (powerUps[4] == true)
+            else if (mpowerUps[4] == true)
             {
                 BulletShot(-1f, transform.forward);
                 BulletShot(1f, transform.forward);
@@ -151,18 +151,18 @@ public class PlayerMovement : MonoBehaviour
 
     void PowerUpStart()
     {
-        powerUps[0] = false;
-        powerUps[1] = false;
-        powerUps[2] = false;
-        powerUps[3] = false;
-        powerUps[4] = false;
+        mpowerUps[0] = false;
+        mpowerUps[1] = false;
+        mpowerUps[2] = false;
+        mpowerUps[3] = false;
+        mpowerUps[4] = false;
 
     }
     void BulletShot(float dir, Vector3 transfom)// Skotten skapas och skjuter dem.
     {
 
-        Rigidbody bulletClone = (Rigidbody)Instantiate(bulletRgb, transform.position, transform.rotation);
-        bulletClone.velocity = transfom * dir * bulletSpeed;
+        Rigidbody bulletClone = (Rigidbody)Instantiate(mbulletRgb, transform.position, transform.rotation);
+        bulletClone.velocity = transfom * dir * mbulletSpeed;
         Physics.IgnoreCollision(bulletClone.GetComponent<Collider>(), GetComponent<Collider>());
     }
 
@@ -170,21 +170,21 @@ public class PlayerMovement : MonoBehaviour
 
     public bool[] PowerUp
     {
-        get { return powerUps; }
-        set { powerUps = value; }
+        get { return mpowerUps; }
+        set { mpowerUps = value; }
 
 
     }
     public int Power
     {
-        get { return powerr; }
-        set { powerr = value; }
+        get { return mpowerr; }
+        set { mpowerr = value; }
 
     }
     public int PHealth
     {
-        get { return playerHealth; }
-        set { playerHealth = value; }
+        get { return mplayerHealth; }
+        set { mplayerHealth = value; }
 
     }
 }
